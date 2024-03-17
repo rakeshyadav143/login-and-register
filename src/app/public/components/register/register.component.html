@@ -1,0 +1,80 @@
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
+    <h1 mat-dialog-title>Register</h1>
+  </div>
+  <div class="col-lg-12">
+    <mat-dialog-content>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="col">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Username" formControlName="username">
+            <mat-error
+              *ngIf="this.registerForm.get('username')?.touched && this.registerForm.get('username')?.hasError('required')">
+              Username is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input type="text" matInput placeholder="First Name" formControlName="firstname">
+            <mat-error
+              *ngIf="this.registerForm.get('firstname')?.touched && this.registerForm.get('firstname')?.hasError('required')">
+              First Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Last Name" formControlName="lastname">
+            <mat-error
+              *ngIf="this.registerForm.get('lastname')?.touched && this.registerForm.get('lastname')?.hasError('required')">
+              Last Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input matInput [matDatepicker]="dob" placeholder="Choose a date" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob></mat-datepicker>
+            <mat-error
+              *ngIf="this.registerForm.get('dob')?.touched && this.registerForm.get('dob')?.hasError('required')">
+              Date of Birth is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input type="number" min="0" matInput placeholder="Age" formControlName="age">
+            <mat-error
+              *ngIf="this.registerForm.get('age')?.touched && this.registerForm.get('age')?.hasError('required')">
+              Age is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error
+              *ngIf="this.registerForm.get('password')?.touched && this.registerForm.get('password')?.hasError('required')">
+              Password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm">
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password Confirmation" formControlName="passwordConfirm">
+            <mat-error
+              *ngIf="this.registerForm.get('passwordConfirm')?.touched && this.registerForm.get('passwordConfirm')?.hasError('required')">
+              Password Confirmation is required</mat-error>
+          </mat-form-field>
+          <mat-error
+          *ngIf="this.registerForm.get('passwordConfirm')?.dirty && this.registerForm.hasError('passwordsNotMatching')">
+          Passwords are not matching!
+          </mat-error>
+        </div>
+      <div class="button">
+        <!-- Button is disabled(not clickable), if our RegisterForm contains Validation Errors -->
+        <button type="submit" mat-button [disabled]="!registerForm.valid">Register</button>
+        <button mat-button mat-dialog-close>Close</button>
+      </div>
+      </form>
+    </mat-dialog-content>
+  </div>
+</div>
+</div>

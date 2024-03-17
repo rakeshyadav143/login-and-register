@@ -1,0 +1,22 @@
+<div class="container mt-3">
+    <h2>Log Table</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>LogInTime</th>
+          <th>LougOut Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userLog of loginUserLogArr">
+          <td>{{userLog.username}}</td>
+          <td>{{userLog.loginTime}}</td>
+          <td>{{userLog.logoutTime}}</td>
+          <td><button mat-raised-button (click)="logout()">Logout</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
